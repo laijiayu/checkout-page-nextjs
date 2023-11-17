@@ -10,7 +10,9 @@ const noto = Noto_Sans({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={noto.className}>
-      <head></head>
+      <head>
+        <title>page</title>
+      </head>
       <body>
         <Providers>{children}</Providers>
       </body>
