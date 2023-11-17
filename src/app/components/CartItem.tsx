@@ -2,25 +2,17 @@
 import { increase, removeItem, decrease } from "@/redux/slice/cart/cartSlice"
 import { ChevronDown, ChevronUp } from "@/icons"
 import { useDispatch } from "react-redux"
+import { CardItems } from "@/redux/slice/cart/cartSlice"
+import Image from "next/image"
 
-const CartItem = ({
-  id,
-  title,
-  price,
-  img,
-  amount,
-}: {
-  id: string
-  title: string
-  price: string
-  img: string
-  amount: number
-}) => {
+const CartItem = ({ id, title, price, img, amount }: CardItems) => {
   const dispatch = useDispatch()
 
   return (
     <article className="cart-item">
-      <img src={img} alt={title} />
+      <div style={{ position: "relative", width: "100px", height: "100px" }}>
+        <Image src={img} alt={title} fill />
+      </div>
       <div>
         <h4>{title}</h4>
         <h4 className="item-price">{price}</h4>

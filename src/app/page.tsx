@@ -1,13 +1,9 @@
-"use client"
-
-import CartContainer from "./components/CartContainer"
-import Navbar from "./components/Navbar"
+import Container from "./components/Container"
 
 export default function Main() {
   return (
     <>
-      <Navbar />
-      <CartContainer />
+      <Container />
     </>
   )
 }

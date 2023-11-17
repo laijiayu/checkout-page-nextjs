@@ -1,22 +1,13 @@
-import CartItem from "./CartItem"
-import { useSelector, useDispatch } from "react-redux"
+import CartItem from "./components/CartItem"
 import { openModal } from "@/redux/slice/modal/modalSlice"
-
 import { getCartItems } from "@/redux/slice/cart/cartSlice"
-
-type CardItems = { cartItems: []; total: number; amount: number }
-
-interface RootState {
-  cart: {
-    cartItems: []
-    total: number
-    amount: number
-  }
-}
+import { useAppDispatch, useAppSelector } from "./hook"
+import { CardItems } from "@/redux/slice/cart/cartSlice"
+import { FaArrowRotateRight } from "react-icons/fa6"
 
 const CartContainer = () => {
-  const { cartItems, total, amount }: CardItems = useSelector((store: RootState) => store.cart)
-  const dispatch = useDispatch()
+  const { cartItems, total, amount } = useAppSelector((store) => store.cart)
+  const dispatch = useAppDispatch()
 
   if (amount < 1) {
     return (
@@ -45,7 +36,7 @@ const CartContainer = () => {
         <h2>My bag</h2>
       </header>
       <div>
-        {cartItems.map((item) => {
+        {cartItems.map((item: CardItems) => {
           return <CartItem key={item.id} {...item} />
         })}
       </div>

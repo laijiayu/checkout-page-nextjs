@@ -3,7 +3,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
-type CardItems = { id: string, title: string, price: string, img: string, amount: number }
+export type CardItems = { id: string, title: string, price: string, img: string, amount: number }
 
 type State = {
     cartItems: CardItems[];
@@ -12,7 +12,6 @@ type State = {
     isLoading: boolean;
 }
 
-
 const initialState = {
     cartItems: [],
     amount: 4,
@@ -20,17 +19,9 @@ const initialState = {
     isLoading: true,
 }
 
-type Response = {
-    id: String,
-    title: 'google pixel',
-    price: '499.99',
-    img: 'https://images2.imgbox.com/fb/3d/O4TPmhlt_o.png',
-    amount: 1,
-}
-
 const url = "https://course-api.com/react-useReducer-cart-project"
 
-export const getCartItems = createAsyncThunk("cart/getrCartItems", async (name, thunkAPI) => {
+export const getCartItems = createAsyncThunk("cart/getrCartItems", async (_name, thunkAPI) => {
     try {
         const getData = await axios.get(url)
         return getData.data
